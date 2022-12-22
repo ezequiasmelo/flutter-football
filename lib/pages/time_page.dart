@@ -17,7 +17,10 @@ class _TimePageState extends State<TimePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => AddTituloPage(time: widget.time, onSave: addTitulo),
+        builder: (_) => AddTituloPage(
+          time: widget.time,
+          onSave: addTitulo,
+        ),
       ),
     );
   }
@@ -29,8 +32,9 @@ class _TimePageState extends State<TimePage> {
 
     Navigator.pop(context);
 
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('Salvo com sucesso!')));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Salvo com sucesso!')),
+    );
   }
 
   @override

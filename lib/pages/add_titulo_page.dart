@@ -67,28 +67,30 @@ class _AddTituloPageState extends State<AddTituloPage> {
               ),
             ),
             Expanded(
-                child: Container(
-              alignment: Alignment.bottomCenter,
-              margin: const EdgeInsets.all(24.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    widget.onSave(
-                        Titulo(ano: _ano.text, campeonato: _campeonato.text));
-                  }
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.check),
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text('Salvar', style: TextStyle(fontSize: 20)),
-                    )
-                  ],
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                margin: const EdgeInsets.all(24.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      widget.onSave(
+                        Titulo(ano: _ano.text, campeonato: _campeonato.text),
+                      );
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.check),
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text('Salvar', style: TextStyle(fontSize: 20)),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ))
+            )
           ],
         ),
       ),
