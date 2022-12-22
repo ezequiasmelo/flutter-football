@@ -5,7 +5,7 @@ import '../models/titulo.dart';
 class TimesRepository {
   final List<Time> _times = [];
 
-  get times => this._times;
+  get times => _times;
 
   void addTitulo({required Time time, required Titulo titulo}) {
     time.titulos.add(titulo);

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/pages/home_controller.dart';
 import 'package:flutter_football/pages/time_page.dart';
@@ -49,8 +47,8 @@ class _HomePageState extends State<HomePage> {
             },
           );
         },
-        separatorBuilder: (_, __) => Divider(),
-        padding: EdgeInsets.all(16),
+        separatorBuilder: (_, __) => const Divider(),
+        padding: const EdgeInsets.all(16),
       ),
     );
   }

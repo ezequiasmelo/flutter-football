@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
       title: 'Brasileirão',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
