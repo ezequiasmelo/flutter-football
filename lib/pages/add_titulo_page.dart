@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/models/titulo.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class AddTituloPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _AddTituloPageState extends State<AddTituloPage> {
       ),
     );
 
-    Navigator.pop(context);
+    Get.back();
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Salvo com sucesso!')),

@@ -3,6 +3,7 @@ import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/pages/home_controller.dart';
 import 'package:flutter_football/pages/time_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,13 +42,9 @@ class _HomePageState extends State<HomePage> {
                   tabela[time].pontos.toString(),
                 ),
                 onTap: () {
-                  Navigator.push(
-                      contexto,
-                      MaterialPageRoute(
-                        builder: (_) => TimePage(
-                          key: Key(tabela[time].nome),
-                          time: tabela[time],
-                        ),
+                  Get.to(() => TimePage(
+                        key: Key(tabela[time].nome),
+                        time: tabela[time],
                       ));
                 },
               );

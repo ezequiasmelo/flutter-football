@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_football/models/time.dart';
-import 'package:flutter_football/models/titulo.dart';
 import 'package:flutter_football/pages/add_titulo_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class TimePage extends StatefulWidget {
@@ -16,14 +16,9 @@ class TimePage extends StatefulWidget {
 
 class _TimePageState extends State<TimePage> {
   tituloPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => AddTituloPage(
+    Get.to(() => AddTituloPage(
           time: widget.time,
-        ),
-      ),
-    );
+        ));
   }
 
   @override
