@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/models/titulo.dart';
 import 'package:flutter_football/pages/add_titulo_page.dart';
+import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:provider/provider.dart';
 
 class TimePage extends StatefulWidget {
   final Time time;
@@ -19,21 +21,8 @@ class _TimePageState extends State<TimePage> {
       MaterialPageRoute(
         builder: (_) => AddTituloPage(
           time: widget.time,
-          onSave: addTitulo,
         ),
       ),
-    );
-  }
-
-  addTitulo(Titulo titulo) {
-    setState(() {
-      widget.time.titulos.add(titulo);
-    });
-
-    Navigator.pop(context);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Salvo com sucesso!')),
     );
   }
 
@@ -87,7 +76,11 @@ class _TimePageState extends State<TimePage> {
   }
 
   Widget titulos() {
-    final quantidade = widget.time.titulos.length;
+    final time = Provider.of<TimesRepository>(context)
+        .times
+        .firstWhere((element) => element.nome == widget.time.nome);
+
+    final quantidade = time.titulos.length;
 
     return quantidade == 0
         ? const Center(
@@ -97,8 +90,8 @@ class _TimePageState extends State<TimePage> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 leading: const Icon(Icons.emoji_events),
-                title: Text(widget.time.titulos[index].campeonato),
-                trailing: Text(widget.time.titulos[index].ano),
+                title: Text(time.titulos[index].campeonato),
+                trailing: Text(time.titulos[index].ano),
               );
             },
             separatorBuilder: (_, __) => const Divider(),

@@ -1,8 +1,15 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_football/pages/home_page.dart';
+import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => TimesRepository(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

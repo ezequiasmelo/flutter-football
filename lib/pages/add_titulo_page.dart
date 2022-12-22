@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/models/titulo.dart';
+import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:provider/provider.dart';
 
 class AddTituloPage extends StatefulWidget {
   final Time time;
-  final ValueChanged<Titulo> onSave;
 
   const AddTituloPage({
     Key? key,
     required this.time,
-    required this.onSave,
   }) : super(key: key);
 
   @override
@@ -20,6 +20,22 @@ class _AddTituloPageState extends State<AddTituloPage> {
   final _campeonato = TextEditingController();
   final _ano = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  save() {
+    Provider.of<TimesRepository>(context, listen: false).addTitulo(
+      time: widget.time,
+      titulo: Titulo(
+        ano: _ano.text,
+        campeonato: _campeonato.text,
+      ),
+    );
+
+    Navigator.pop(context);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Salvo com sucesso!')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +89,7 @@ class _AddTituloPageState extends State<AddTituloPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      widget.onSave(
-                        Titulo(ano: _ano.text, campeonato: _campeonato.text),
-                      );
+                      save();
                     }
                   },
                   child: Row(

@@ -20,3 +20,5 @@ samples, guidance on mobile development, and a full API reference.
     flutter create --project-name flutter_football --platforms windows,android,web ./flutter-football
 
 ## packages
+
+    provider
