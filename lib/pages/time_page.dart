@@ -5,6 +5,8 @@ import 'package:flutter_football/repositories/times_repository.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+import 'edit_titulo_page.dart';
+
 class TimePage extends StatefulWidget {
   final Time time;
 
@@ -87,6 +89,12 @@ class _TimePageState extends State<TimePage> {
                 leading: const Icon(Icons.emoji_events),
                 title: Text(time.titulos[index].campeonato),
                 trailing: Text(time.titulos[index].ano),
+                onTap: () {
+                  Get.to(
+                    EditTituloPage(titulo: time.titulos[index]),
+                    fullscreenDialog: true,
+                  );
+                },
               );
             },
             separatorBuilder: (_, __) => const Divider(),
