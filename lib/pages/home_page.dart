@@ -3,6 +3,7 @@ import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/pages/home_controller.dart';
 import 'package:flutter_football/pages/time_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:flutter_football/widgets/brasao.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +36,10 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (BuildContext contexto, int time) {
               final List<Time> tabela = repository.times;
               return ListTile(
-                leading: Image.network(tabela[time].brasao),
+                leading: Brasao(
+                  image: tabela[time].brasao,
+                  width: 40,
+                ),
                 title: Text(tabela[time].nome),
                 subtitle: Text('Titulos: ${tabela[time].titulos.length}'),
                 trailing: Text(

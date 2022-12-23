@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_football/models/time.dart';
 import 'package:flutter_football/pages/add_titulo_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:flutter_football/widgets/brasao.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -55,8 +56,9 @@ class _TimePageState extends State<TimePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(24),
-                  child: Image.network(
-                    widget.time.brasao.replaceAll("40x40", "100x100"),
+                  child: Brasao(
+                    image: widget.time.brasao,
+                    width: 250,
                   ),
                 ),
                 Text(
