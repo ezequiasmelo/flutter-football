@@ -24,3 +24,4 @@ samples, guidance on mobile development, and a full API reference.
     provider
     getx
     shared_preferences
+    sqflite

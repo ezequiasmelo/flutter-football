@@ -8,13 +8,14 @@ class ThemeController extends GetxController {
     'light': ThemeMode.light,
     'dark': ThemeMode.dark,
   };
-  SharedPreferences? prefs;
+  // SharedPreferences? prefs;
 
   static ThemeController get to => Get.find();
 
   loadThemeMode() async {
-    prefs = await SharedPreferences.getInstance();
-    String themeText = prefs!.getString('theme') ?? 'light';
+    var prefs = await SharedPreferences
+        .getInstance(); // prefs = await SharedPreferences.getInstance();
+    String themeText = prefs.getString('theme') ?? 'light';
 
     isDark.value = themeText == 'dark' ? true : false;
     setMode(themeText);
@@ -24,8 +25,8 @@ class ThemeController extends GetxController {
     ThemeMode? themeMode = themeModes[themeText];
     Get.changeThemeMode(themeMode!);
 
-    prefs = await SharedPreferences.getInstance();
-    await prefs!.setString('theme', themeText);
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.setString('theme', themeText);
   }
 
   changeTheme() {

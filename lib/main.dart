@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_football/config.dart';
 import 'package:flutter_football/controllers/theme_controller.dart';
 import 'package:flutter_football/pages/home_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
+import 'package:flutter_football/widgets/checkauth.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  Get.lazyPut<ThemeController>(() => ThemeController());
+void main() async {
+  await initConfigurations();
 
   runApp(ChangeNotifierProvider(
     create: (context) => TimesRepository(),
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      home: CheckAuth(),
     );
   }
 }
