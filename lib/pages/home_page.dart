@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_football/controllers/theme_controller.dart';
 import 'package:flutter_football/models/time.dart';
-import 'package:flutter_football/pages/home_controller.dart';
 import 'package:flutter_football/pages/time_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
 import 'package:flutter_football/widgets/brasao.dart';
@@ -15,19 +15,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = HomeController();
-  }
+  var controller = ThemeController.to;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Brasileirão'),
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: ListTile(
+                  leading: Obx(() => controller.isDark.value
+                      ? const Icon(Icons.brightness_7)
+                      : const Icon(Icons.brightness_2)),
+                  title: Obx(() => controller.isDark.value
+                      ? const Text('Light')
+                      : const Text('Dark')),
+                  onTap: () => controller.changeTheme(),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Consumer<TimesRepository>(
         builder: ((_, repository, __) {
