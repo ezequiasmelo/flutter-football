@@ -79,7 +79,7 @@ class _TimePageState extends State<TimePage> {
         .times
         .firstWhere((element) => element.nome == widget.time.nome);
 
-    final quantidade = time.titulos.length;
+    final quantidade = time.titulos!.length;
 
     return quantidade == 0
         ? const Center(
@@ -89,11 +89,11 @@ class _TimePageState extends State<TimePage> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 leading: const Icon(Icons.emoji_events),
-                title: Text(time.titulos[index].campeonato),
-                trailing: Text(time.titulos[index].ano),
+                title: Text(time.titulos![index].campeonato),
+                trailing: Text(time.titulos![index].ano),
                 onTap: () {
                   Get.to(
-                    EditTituloPage(titulo: time.titulos[index]),
+                    EditTituloPage(titulo: time.titulos![index]),
                     fullscreenDialog: true,
                   );
                 },
