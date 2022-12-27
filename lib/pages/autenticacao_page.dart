@@ -16,27 +16,27 @@ class AutenticacaoPage extends StatelessWidget {
         title: Obx(() => Text(controller.titulo.value)),
         actions: [
           TextButton(
-            child: Obx(() => Text(controller.appBarButton.value)),
             onPressed: controller.toogleRegistrar,
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white70),
             ),
+            child: Obx(() => Text(controller.appBarButton.value)),
           ),
         ],
       ),
       body: Obx(
         () => controller.isLoading.value
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Form(
                 key: controller.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: TextFormField(
                         controller: controller.email,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Email',
                         ),
@@ -50,12 +50,12 @@ class AutenticacaoPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           vertical: 12.0, horizontal: 24.0),
                       child: TextFormField(
                         controller: controller.senha,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Senha',
                         ),
@@ -84,12 +84,12 @@ class AutenticacaoPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.check),
+                            const Icon(Icons.check),
                             Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Obx(() => Text(
                                   controller.botaoPrincipal.value,
-                                  style: TextStyle(fontSize: 20))),
+                                  style: const TextStyle(fontSize: 20))),
                             )
                           ],
                         ),

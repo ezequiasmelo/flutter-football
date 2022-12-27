@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_football/config.dart';
 import 'package:flutter_football/controllers/theme_controller.dart';
-import 'package:flutter_football/pages/home_page.dart';
 import 'package:flutter_football/repositories/times_repository.dart';
 import 'package:flutter_football/widgets/checkauth.dart';
 import 'package:get/get.dart';
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      home: CheckAuth(),
+      home: const CheckAuth(),
     );
   }
 }
