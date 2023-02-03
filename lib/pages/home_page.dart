@@ -7,6 +7,8 @@ import 'package:flutter_football/widgets/brasao.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+import '../services/auth_service.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -35,6 +37,16 @@ class _HomePageState extends State<HomePage> {
                       ? const Text('Light')
                       : const Text('Dark')),
                   onTap: () => controller.changeTheme(),
+                ),
+              ),
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(Icons.exit_to_app),
+                  title: const Text('Sair'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    AuthService.to.logout();
+                  },
                 ),
               ),
             ],

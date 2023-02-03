@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../services/auth_service.dart';
+
 class AutenticacaoController extends GetxController {
   final email = TextEditingController();
   final senha = TextEditingController();
@@ -25,7 +27,7 @@ class AutenticacaoController extends GetxController {
 
   login() async {
     isLoading.value = true;
-    // await AuthService.to.login(email.text, senha.text);
+    await AuthService.to.login(email.text, senha.text);
     isLoading.value = false;
   }
 
